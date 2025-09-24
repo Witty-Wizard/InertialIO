@@ -9,8 +9,10 @@
 class InertialIO
 {
 public:
-
-  InertialIO(Stream *rxPort, int rxPin, int txPin, bool inverted);
+  InertialIO();
+  virtual void begin() = 0;
 };
+
+#include "ICM42688/ICM42688.h"
 
 #endif // INERTIALIO_H
