@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * Register Bank 0
  */
