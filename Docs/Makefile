@@ -2,13 +2,25 @@
 
 # You can set these variables from the command line, and also
 # from the environment for the first two.
-SPHINXOPTS       ?=
-SPHINXBUILD      ?= .venv/bin/sphinx-build
-SPHINXAUTOBUILD  ?= .venv/bin/sphinx-autobuild
-PIP              ?= .venv/bin/pip
-PYTHON           ?= .venv/bin/python
-SOURCEDIR        = source
-BUILDDIR         = build
+
+ifeq ($(OS),Windows_NT)
+	SPHINXOPTS       ?=
+	SPHINXBUILD      ?= .venv\Scripts\sphinx-build
+	SPHINXAUTOBUILD  ?= .venv\Scripts\sphinx-autobuild
+	PIP              ?= .venv\Scripts\pip
+	PYTHON           ?= .venv\Scripts\python
+	SOURCEDIR        = source
+	BUILDDIR         = build
+
+else
+	SPHINXOPTS       ?=
+	SPHINXBUILD      ?= .venv/bin/sphinx-build
+	SPHINXAUTOBUILD  ?= .venv/bin/sphinx-autobuild
+	PIP              ?= .venv/bin/pip
+	PYTHON           ?= .venv/bin/python
+	SOURCEDIR        = source
+	BUILDDIR         = build
+endif
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -18,10 +30,9 @@ help:
 
 # Setup virtual environment and install dependencies
 setup:
-	python -m venv .venv && \
-	. .venv/bin/activate && \
-	.venv/bin/pip install --upgrade pip && \
-	.venv/bin/pip install -r requirements.txt
+	python -m venv .venv 
+	$(PYTHON) -m pip install --upgrade pip 
+	$(PIP) install -r requirements.txt
 
 # Run sphinx-autobuild for live-reloading docs during development
 dev:
