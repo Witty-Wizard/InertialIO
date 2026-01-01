@@ -6,36 +6,8 @@
 InertialIO
 ======================
 
-.. _mainpage:
-
-InertialIO is a common library designed to simplify the implementation of RC protocol decoding in Arduino projects. It provides a modular and extensible architecture that allows for easy integration of various RC protocols.
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Getting Started:
-
-   installation
-   tutorial
-   example
-   
-.. toctree::
-   :maxdepth: 1
-   :caption: Supported Protocols:
-
-   sbus
-   fport
-
-.. toctree::
-   :maxdepth: 1
-   :caption: API Documentation:
-
-   apidocumentation
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Development:
-   
-   contributing
+.. doxygenindex::
+   :project: InertialIO
 
 License
 -------
