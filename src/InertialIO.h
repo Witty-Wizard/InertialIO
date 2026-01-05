@@ -17,15 +17,31 @@
 
 #include "InertialBus/InertialBus.h"
 
+typedef struct gyroData_s
+{
+  int16_t x;
+  int16_t y;
+  int16_t z;
+} __attribute__((packed)) gyroData_t;
+
+typedef struct accelData_s
+{
+  int16_t x;
+  int16_t y;
+  int16_t z;
+} __attribute__((packed)) accelData_t;
+
 class InertialIO
 {
 protected:
   InertialBus *_transportBus = NULL;
 
 public:
-  InertialIO(TwoWire *bus, int sci = -1, int scl = -1);
-  InertialIO(SPIClass *bus, int sdi = -1, int sdo = -1, int scl = -1,
-             int cs = -1);
+  InertialIO(TwoWire *bus, int sci, int scl);
+  InertialIO(SPIClass *bus, int cs, int sdi, int sdo, int scl);
+  virtual bool begin() = 0;
+  virtual gyroData_t readGyro() = 0;
+  virtual accelData_t readAccel() = 0;
   ~InertialIO();
 };
 

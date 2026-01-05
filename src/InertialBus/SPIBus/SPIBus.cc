@@ -39,12 +39,10 @@ SPIBus::write(uint8_t addr, uint8_t data)
 void
 SPIBus::readBytes(uint8_t addr, uint8_t *data, size_t len)
 {
-  uint8_t __dummy[len];
-  memset(__dummy, 0, len);                    /**< set all indexes as zero */
-  digitalWrite(_cs, LOW);                     /**< Enable data comms */
-  _SPIBus->transfer(addr | 0x80);             /**< Send read command */
-  _SPIBus->transferBytes(__dummy, data, len); /**< Read requested Bytes */
-  digitalWrite(_cs, HIGH);                    /**< Disable comms */
+  digitalWrite(_cs, LOW);                  /**< Enable data comms */
+  _SPIBus->transfer(addr | 0x80);          /**< Send read command */
+  _SPIBus->transferBytes(NULL, data, len); /**< Read requested Bytes */
+  digitalWrite(_cs, HIGH);                 /**< Disable comms */
 }
 
 void
