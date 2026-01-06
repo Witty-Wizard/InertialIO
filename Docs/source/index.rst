@@ -27,7 +27,6 @@ over different transports.
 .. toctree::
    :maxdepth: 1
 
-   examples/basic_i2c
    examples/basic_spi
 
 .. _apidocumentation:

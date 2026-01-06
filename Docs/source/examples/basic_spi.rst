@@ -12,16 +12,14 @@ Example Code
    #include <SPI.h>
    #include <InertialIO.h>
 
-   constexpr uint8_t CS_PIN = 10;
+   #define CS_PIN  10
 
-   SPIBus bus(SPI, CS_PIN);
-   InertialIO imu(bus);
+   InertialIO *imu = new ICM42688(&bus,10);
 
    void setup() {
        Serial.begin(115200);
-       SPI.begin();
 
-       if (!imu.begin()) {
+       if (!imu->begin()) {
            Serial.println("Initialization failed");
            while (1);
        }
@@ -30,11 +28,11 @@ Example Code
    }
 
    void loop() {
-       float ax, ay, az;
-       float gx, gy, gz;
+       int16_t ax, ay, az;
+       int16_t gx, gy, gz;
 
-       imu.readAccel(ax, ay, az);
-       imu.readGyro(gx, gy, gz);
+       imu->readAccel(ax, ay, az);
+       imu->readGyro(gx, gy, gz);
 
        Serial.print("Accel: ");
        Serial.print(ax); Serial.print(", ");
