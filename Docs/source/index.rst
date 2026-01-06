@@ -18,6 +18,26 @@ Features
 * Raw accelerometer and gyroscope data access
 * Designed for embedded and resource-constrained systems
 
+Examples
+--------
+
+Basic usage examples demonstrating initialization and data access
+over different transports.
+
+.. toctree::
+   :maxdepth: 1
+
+   examples/basic_i2c
+   examples/basic_spi
+
+.. _apidocumentation:
+
+API Documentation
+-----------------
+
+.. doxygenindex::
+   :project: InertialIO
+
 License
 -------
 
